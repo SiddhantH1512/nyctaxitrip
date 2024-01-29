@@ -1,0 +1,16 @@
+stages:
+  build_features:
+    cmd: python ./src/features/build_features.py
+    deps:
+      - ./data/raw/
+      - ./src/features/build_features.py
+    # outs:
+    #   - ./data/processed/
+
+  train_model:
+    cmd: python ./src/models/train_model.py ./data/processed/
+    deps:
+      - ./src/models/train_model.py
+      - ./data/processed/
+    # outs:
+    #   - ./models/trained_model.joblib # Or wherever your model is saved

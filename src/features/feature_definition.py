@@ -4,7 +4,11 @@ from math import radians, sin, cos, sqrt, atan2
 from pathlib import Path
 import pandas as pd
 
+date1 = "pickup_datetime"
+
+
 def build_features(dataframe, date1):
+    dataframe[date1] = pd.to_datetime(dataframe[date1])
     dataframe["Month"] = dataframe[date1].dt.month
     dataframe["Pickup Day"] = dataframe[date1].dt.dayofweek
     dataframe["Pickup hours"] = dataframe[date1].dt.hour
@@ -33,16 +37,20 @@ def create_distance_feature(dataframe):
 def test_created_features(dataframe, date1):
     build_features(dataframe, date1)
     create_distance_feature(dataframe)
+    print(dataframe.head())
+    
+def feature_build(dataframe, date1):
+    build_features(dataframe, date1)
+    create_distance_feature(dataframe)
+    do_not_use_for_training = ["id", "pickup_datetime", "dropoff_datetime"]
+    feature_names = [feature for feature in dataframe.columns if feature not in do_not_use_for_training]
+    print(f"We have {len(feature_names)} features in {dataframe}")
+    return dataframe[feature_names]
 
 if __name__ == "__main__":
-    # Use pathlib.Path to handle paths in a platform-independent way
-    current_dir = Path(__file__).resolve()
-    project_root = current_dir.parent.parent  # Go up two levels to reach the project root
-    datapath = project_root / "data" / "raw" / "test.csv"
-
-    date1 = "pickup_datetime"
-    # Read the data
+    current_dir = Path(__file__)
+    project_root = current_dir.parent.parent.parent  # Go up two levels to reach the project root
+    datapath = project_root.as_posix() + "/data/raw/test.csv"
     data = pd.read_csv(datapath)
-
-    # Assuming 'date1' is defined somewhere in your script
     test_created_features(data, date1)
+
