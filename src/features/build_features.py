@@ -48,7 +48,7 @@ if __name__ == "__main__":
     
     train_data = feature_build(train_data, date1)
     train_data = handle_categorical(train_data) 
-    test_data = remove_object_columns(train_data)
+    train_data = remove_object_columns(train_data)
     
     
     test_data = feature_build(test_data, date1)
