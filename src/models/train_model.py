@@ -8,7 +8,7 @@ import pandas as pd
 from hyperopt import hp
 from sklearn.model_selection import train_test_split
 from hyperopt.pyll.base import scope
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
 from hyperopt import hp, fmin, tpe, Trials, STATUS_OK, space_eval
 from xgboost import XGBRegressor
 
@@ -38,7 +38,7 @@ def find_best_model_with_params(X_train, y_train, X_test, y_test):
         model.fit(X_train, y_train)
         y_pred = model.predict(X_test)
 
-        model_mse = mean_squared_error(y_test, y_pred)
+        model_mse = r2_score(y_test, y_pred)
         mlflow.log_metric('MSE', model_mse)  # record actual metric with mlflow run
         loss = model_mse  
         return {'loss': loss, 'status': STATUS_OK}
