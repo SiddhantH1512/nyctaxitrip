@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/siddhant/nycproj/nyctaxitrip/mlruns/0/0b88a74a440f4ea4a347c2a25a80461e/artifacts
+end_time: 1706681294538
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0b88a74a440f4ea4a347c2a25a80461e
+run_name: XGBRegressor
+run_uuid: 0b88a74a440f4ea4a347c2a25a80461e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706681293293
+status: 4
+tags: []
+user_id: siddhant
