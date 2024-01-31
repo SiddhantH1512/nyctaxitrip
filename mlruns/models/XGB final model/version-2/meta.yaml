@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1706701456504
+current_stage: None
+description: ''
+last_updated_timestamp: 1706701456504
+name: XGB final model
+run_id: f12e99fd86834764ba9b23d5b72a9f79
+run_link: ''
+source: file:///Users/siddhant/nycproj/nyctaxitrip/mlruns/0/f12e99fd86834764ba9b23d5b72a9f79/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///Users/siddhant/nycproj/nyctaxitrip/mlruns/0/f12e99fd86834764ba9b23d5b72a9f79/artifacts/model
+user_id: null
+version: 2
