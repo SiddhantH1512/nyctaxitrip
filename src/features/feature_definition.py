@@ -19,12 +19,12 @@ def build_features(dataframe, date1):
     
     # Handling dropoff_datetime
     if 'dropoff_datetime' in dataframe.columns:
-        dataframe["dropoff_datetime"] = pd.to_datetime(dataframe["dropoff_datetime"])
-        dataframe["Dropoff Month"] = dataframe["dropoff_datetime"].dt.month
-        dataframe["Dropoff Day"] = dataframe["dropoff_datetime"].dt.dayofweek
-        dataframe["Dropoff hours"] = dataframe["dropoff_datetime"].dt.hour
-        dataframe["Dropoff mins"] = dataframe["dropoff_datetime"].dt.minute
-        dataframe["Day Name"] = dataframe[date1].dt.day_name()
+        # dataframe["dropoff_datetime"] = pd.to_datetime(dataframe["dropoff_datetime"])
+        # dataframe["Dropoff Month"] = dataframe["dropoff_datetime"].dt.month
+        # dataframe["Dropoff Day"] = dataframe["dropoff_datetime"].dt.dayofweek
+        # dataframe["Dropoff hours"] = dataframe["dropoff_datetime"].dt.hour
+        # dataframe["Dropoff mins"] = dataframe["dropoff_datetime"].dt.minute
+        # dataframe["Day Name"] = dataframe[date1].dt.day_name()
         dataframe.drop(['dropoff_datetime'], axis=1, inplace=True)
         
     if 'store_and_fwd_flag' in dataframe.columns:
@@ -94,7 +94,7 @@ def feature_build(dataframe, date1):
     return dataframe
 
     
-    return dataframe
+    
 
 if __name__ == "__main__":
     current_dir = Path(__file__)
