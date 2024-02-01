@@ -102,4 +102,3 @@ if __name__ == "__main__":
     datapath = project_root.as_posix() + "/data/raw/test.csv"
     data = pd.read_csv(datapath)
     test_created_features(data, date1)
-
