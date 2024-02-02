@@ -10,29 +10,29 @@ stages:
       nfiles: 3
     - path: ./src/features/build_features.py
       hash: md5
-      md5: ea24c17dba7d672a7b235bb37eb3324e
-      size: 2147
+      md5: 5d9252b1a7d24856a7f0904be329f8ab
+      size: 1807
   train_model:
-    cmd: python ./src/models/train_model.py ./data/processed/
+    cmd: python ./src/models/train_model.py /Users/siddhant/nycproj/nyctaxitrip/data/processed/
     deps:
-    - path: ./data/processed/
-      hash: md5
-      md5: 089cfb95baab816565f22277edab26f9.dir
-      size: 412415027
-      nfiles: 3
     - path: ./src/models/train_model.py
       hash: md5
-      md5: a24544b559949ad7fe05028f7f3c7b51
-      size: 4286
+      md5: dd3bbbd53c6d9f0a0775bcf9a0069892
+      size: 4090
+    - path: data/processed
+      hash: md5
+      md5: 513310e37d68ee073eab2a7e266a97b9.dir
+      size: 287469283
+      nfiles: 3
   push_model:
     cmd: python ./src/models/push_model.py ./data/processed/
     deps:
     - path: ./models/
       hash: md5
-      md5: 947b65c8aaa1cb8a2c1436051f2d2823.dir
-      size: 109120
+      md5: c6f98dca8a9d5e45ecc8dd203149605f.dir
+      size: 52936
       nfiles: 2
     - path: ./src/models/train_model.py
       hash: md5
-      md5: a24544b559949ad7fe05028f7f3c7b51
-      size: 4286
+      md5: dd3bbbd53c6d9f0a0775bcf9a0069892
+      size: 4090
