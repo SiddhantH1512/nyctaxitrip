@@ -17,16 +17,7 @@ def build_features(dataframe, date1):
     dataframe["Pickup mins"] = dataframe[date1].dt.minute
     dataframe["Day Name"] = dataframe[date1].dt.day_name()
     
-    # Handling dropoff_datetime
-    if 'dropoff_datetime' in dataframe.columns:
-        # dataframe["dropoff_datetime"] = pd.to_datetime(dataframe["dropoff_datetime"])
-        # dataframe["Dropoff Month"] = dataframe["dropoff_datetime"].dt.month
-        # dataframe["Dropoff Day"] = dataframe["dropoff_datetime"].dt.dayofweek
-        # dataframe["Dropoff hours"] = dataframe["dropoff_datetime"].dt.hour
-        # dataframe["Dropoff mins"] = dataframe["dropoff_datetime"].dt.minute
-        # dataframe["Day Name"] = dataframe[date1].dt.day_name()
-        dataframe.drop(['dropoff_datetime'], axis=1, inplace=True)
-        
+    
     if 'store_and_fwd_flag' in dataframe.columns:
         dataframe['store_and_fwd_flag'] = dataframe['store_and_fwd_flag'].map({'Y': 1, 'N': 0})
 
@@ -68,33 +59,31 @@ def scale(dataframe):
 def test_created_features(dataframe, date1):
     build_features(dataframe, date1)
     create_distance_feature(dataframe)
+    le = LabelEncoder().fit(dataframe["Day Name"])
+    dataframe["Day Name"] = le.transform(dataframe["Day Name"])
+    dataframe["Day Name"] = pd.to_numeric(dataframe["Day Name"])
 
     # Print DataFrame after creating distance feature
     print("DataFrame after creating distance feature:\n", dataframe.head())
-
-    # Directly apply encoding for 'Day Name'
-    day_name_dummies = pd.get_dummies(dataframe['Day Name'], prefix='Day', dtype=int)
-    dataframe = pd.concat([dataframe, day_name_dummies], axis=1)
-    dataframe.drop(['Day Name'], axis=1, inplace=True)
 
     # Print DataFrame after encoding 'Day Name'
     print("DataFrame after encoding 'Day Name':\n", dataframe.head())
 
     scale(dataframe)
     print("DataFrame after scaling:\n", dataframe.head())
+    print(f"The columns in final dataframe are: {dataframe.columns}")
+    print(f"The general columns information is: {dataframe.info()}")
 
     
 def feature_build(dataframe, date1):
     dataframe = build_features(dataframe, date1)
     dataframe = create_distance_feature(dataframe)
-    day_name_dummies = pd.get_dummies(dataframe['Day Name'], prefix='Day', dtype=int)
-    dataframe = pd.concat([dataframe, day_name_dummies], axis=1)
-    dataframe.drop(['Day Name'], axis=1, inplace=True)
+    le = LabelEncoder().fit(dataframe["Day Name"])
+    dataframe["Day Name"] = le.transform(dataframe["Day Name"])
+    dataframe["Day Name"] = pd.to_numeric(dataframe["Day Name"])
+    # dataframe.drop(['Day Name'], axis=1, inplace=True)
     dataframe = scale(dataframe)
-    return dataframe
-
-    
-    
+    return dataframe  
 
 if __name__ == "__main__":
     current_dir = Path(__file__)

@@ -79,11 +79,10 @@ def save_model(model, output_path):
 def main():
     # Get the current script's directory
     curr_dir = Path(__file__).resolve()
-    # Get the project root directory (assuming the script is inside nyctaxitrip/src/models)
+   
     project_root = curr_dir.parent.parent.parent
-
-    # The first command line argument is the relative path to the processed data directory
-    processed_data_dir = project_root / sys.argv[1].strip('./')
+    
+    processed_data_dir = Path(sys.argv[1])
 
     train_file = processed_data_dir / "train.csv"
     if not train_file.exists():

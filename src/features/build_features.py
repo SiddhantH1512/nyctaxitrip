@@ -41,10 +41,8 @@ if __name__ == "__main__":
     train_data = pd.read_csv(train_path)
     test_data = pd.read_csv(test_path)
     
-    
+    train_data.drop(columns="dropoff_datetime", inplace=True)
     train_data = feature_build(train_data, date1)
-    # train_data = remove_object_columns(train_data)
-    
     
     test_data = feature_build(test_data, date1)
     # test_data = remove_object_columns(test_data)
@@ -52,13 +50,5 @@ if __name__ == "__main__":
     
     final_check(train_data)
     final_check(test_data)
-
-    
-    # do_not_use_for_training = ["id", "pickup_datetime", "dropoff_datetime"]
-    # feature_names = [feature for feature in train_data.columns if feature not in do_not_use_for_training]
-    # print(f"We have {len(feature_names)} features")
-    
-    # train_data = train_data[feature_names]
-    # test_data = test_data[feature_names]
     
     save_data(train_data, test_data, output_path)

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/siddhant/nycproj/nyctaxitrip/mlruns/0/508c7886b7f74efcaedef19c81d22416/artifacts
+end_time: 1706822736341
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 508c7886b7f74efcaedef19c81d22416
+run_name: XGB Final Model
+run_uuid: 508c7886b7f74efcaedef19c81d22416
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706822734007
+status: 3
+tags: []
+user_id: siddhant

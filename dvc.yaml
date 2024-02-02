@@ -8,10 +8,11 @@ stages:
     #   - ./data/processed/
 
   train_model:
-    cmd: python ./src/models/train_model.py ./data/processed/
+    # cmd: python ./src/models/train_model.py ./data/processed/
+    cmd: python ./src/models/train_model.py /Users/siddhant/nycproj/nyctaxitrip/data/processed/
     deps:
       - ./src/models/train_model.py
-      - ./data/processed/
+      - /Users/siddhant/nycproj/nyctaxitrip/data/processed/
     # outs:
     #   - ./models/trained_model.joblib # Or wherever your model is saved
 
