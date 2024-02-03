@@ -20,4 +20,5 @@ RUN pip install -r requirements.txt
 EXPOSE 8080
 
 # Run app.py when the container launches
+
 CMD ["python", "service.py"]
