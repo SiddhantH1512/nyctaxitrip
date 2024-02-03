@@ -10,6 +10,8 @@ COPY trained_model.joblib /app/trained_model.joblib
 COPY src/ /app/src/
 COPY requirements.txt /app/requirements.txt
 
+RUN ls -l /app
+
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
